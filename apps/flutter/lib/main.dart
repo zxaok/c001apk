@@ -41,7 +41,7 @@ String? getDefaultSystemFontFamily() {
 
 List<String>? getDefaultSystemFontFallbacks() {
   if (Platform.isWindows) {
-    return const ['Microsoft YaHei', 'Segoe UI', 'Arial', 'sans-serif'];
+    return const ['Microsoft YaHei', 'Arial', 'sans-serif'];
   }
   return null;
 }
