@@ -32,6 +32,20 @@ import 'utils/desktop_window.dart';
 import 'utils/android_links.dart';
 import 'utils/utils.dart';
 
+String? getDefaultSystemFontFamily() {
+  if (Platform.isWindows) {
+    return 'Microsoft YaHei UI';
+  }
+  return null;
+}
+
+List<String>? getDefaultSystemFontFallbacks() {
+  if (Platform.isWindows) {
+    return const ['Microsoft YaHei', 'Segoe UI', 'Arial', 'sans-serif'];
+  }
+  return null;
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -166,6 +180,8 @@ class _C001APKAPPState extends State<C001APKAPP> {
     final lightTheme = applyAppTypography(ThemeData(
       colorScheme: lightColorScheme,
       useMaterial3: true,
+      fontFamily: getDefaultSystemFontFamily(),
+      fontFamilyFallback: getDefaultSystemFontFallbacks(),
       navigationBarTheme: NavigationBarThemeData(
           surfaceTintColor: (lightDynamic != null && useMaterial)
               ? lightColorScheme.surfaceTint
@@ -204,6 +220,8 @@ class _C001APKAPPState extends State<C001APKAPP> {
     final darkTheme = applyAppTypography(ThemeData(
       colorScheme: darkColorScheme,
       useMaterial3: true,
+      fontFamily: getDefaultSystemFontFamily(),
+      fontFamilyFallback: getDefaultSystemFontFallbacks(),
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: <TargetPlatform, PageTransitionsBuilder>{
           TargetPlatform.android: AppPredictiveBackPageTransitionsBuilder(),
